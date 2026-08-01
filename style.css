@@ -1,0 +1,124 @@
+/* 全体設定：背景に透かし画像 */
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 背景画像だけを薄くする */
+body::before {
+    content: "";
+    position: absolute; /* ← fixed から absolute に変更 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url("./image/background.jpg");
+    background-size: 20%;
+    background-repeat: repeat;
+    background-position: top left;
+
+    opacity: 0.1;
+    z-index: -1;
+}
+
+/* タイトル */
+header {
+    background: rgba(30, 235, 85, 0.85);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* 地図画像の中央配置 */
+.map-container {
+    padding: 0;
+    display: block; /* ← flex をやめると余白が消える */
+}
+
+.map-container img {
+    width: 100%;
+    max-width: none;
+    display: block; /* ← inline の隙間を消す */
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* 実績画像の中央配置 */
+.achievement-container {
+    padding: 0;
+    display: block; /* ← flex をやめると余白が消える */
+}
+
+.achievement-container img {
+    width: 10%;
+    display: block;
+    margin: 0 auto;   /* ← 中央寄せの決め手 */
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* 下部リンクリスト */
+footer {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* PCでは2列 */
+    gap: 10px;
+}
+
+@media (max-width: 600px) {
+    ul {
+        grid-template-columns: 1fr; /* スマホでは1列 */
+    }
+}
+
+li {
+    margin: 0; /* Grid で gap を使うので不要 */
+}
+
+a {
+    text-decoration: none;
+    color: #007aff;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 5px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* preタグのセンタリング */
+pre {
+    display: block;
+    width: fit-content;   /* 中身の幅に合わせる */
+    margin: 0 auto;       /* ← 中央寄せの決め手 */
+    text-align: left;     /* pre の中のテキストは左寄せのまま */
+}
+
+.top-right-icon {
+    position: fixed;   /* 画面に固定 */
+    top: 10px;         /* 上からの距離 */
+    right: 10px;       /* 右からの距離 */
+    z-index: 1000;     /* 手前に表示 */
+  }
+
+  .top-right-icon img {
+    width: 60px;       /* アイコンの大きさ */
+    height: auto;
+  }
